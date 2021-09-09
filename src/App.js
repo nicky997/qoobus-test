@@ -1,17 +1,18 @@
 import React from "react";
-import SignUp from "./Components/SignUp";
-import Login from "./Components/Login"
+import Auth from './components/Auth'
 import { useSelector } from "react-redux";
-import { selectUser } from "./features/userSlice";
-import Homepage from "./Components/Homepage";
+import { selectUser } from "./store/user";
+import Homepage from "./components/Homepage";
 import "./styles/global.scss"
+import Header from './components/Header'
 
 const App = () => {
-    const user = useSelector(selectUser);
+  const user = useSelector(selectUser);
 
   return (
     <div className="App">
-        {user ? <Login/> : <SignUp/>}
+      <Header/>
+        {user.loggedIn ? <Homepage /> : <Auth />}
     </div>
   );
 };
